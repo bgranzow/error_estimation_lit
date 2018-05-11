@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+
+\title{Error Estimation in Solid Mechanics}
+\author{Brian N. Granzow}
+
+\begin{document}
+
+\maketitle
+
+\section{Nomenclature}
+
+\begin{itemize}
+\item \emph{Normed error estimate}: Let $u$ denote the exact solution to a
+PDE and $u^h$ denote a corresponding finite element approximation.
+Error estimates are typically of the form $\| u - u^h \| \leq C(h)$,
+where $h$ is some characteristic mesh size and $\| \cdot \|$ is a
+chosen global norm.
+\item \emph{Functional error estimate}: Functional error estimates
+are typically written of the form $| J(u) - J(u^h) | \leq C(h)$,
+where $J(u)$ denotes some functional quantity of the solution $u$, which
+can potentially be localized. Functional error estimates are a more
+general type of error estimate that encompass normed error estimates.
+\item \emph{A priori error estimation}: In \emph{A priori} error estimation,
+the right hand side $C(h)$ of the estimate depends on $h$ and the
+exact solution $u$. Its main use is in qualitative analysis, as the exact
+solution $u$ is generally unknown. For instance, an error estimate of the
+form:
+\begin{gather}
+\| u - u^h \| _{L^2} \leq ch^2 | u |_{H^2}
+\end{gather}
+informs us that a reduction in the mesh size by a factor of 2 will reduce
+the error by a factor of 4.
+\item \emph{A posteriori error estimation}: In \emph{a posteriori} error
+estimation, the right hand side $C(h)$ of the estimate depends on $h$
+and the exact solution $u^h$. These types of estimates can be further
+manipulated into element-wise bounds, which then qualitatively inform
+which elements contribute more greatly to the overall error. This information
+can then in turn be used for \emph{adaptive} analysis. For instance,
+a simple residual-based \emph{a posteriori} error estimate for Poisson's
+equation, $- \nabla^2 u = f$, takes the form:
+\begin{gather}
+\| u - u^h \| _{L^2} \leq c h \| f + \nabla^2u \|,
+\end{gather}
+whose right-hand side can be integrated by parts to be expressed as a sum of
+volumetric contributions from element interiors and jump contributions from
+element boundaries.
+\item \emph{Error estimator}: An error estimate $\eta_K$ of the form
+$\| u - u^h \| \leq \eta_K$ provides a provably true upper bound for the
+discretiztion error that reaches a sharp upper bound as the mesh size
+$h \to 0$.
+\item \emph{Error indicator}: An error indicator $\hat{\eta}_K$ of the
+form $\| u - u^h \| \leq \hat{\eta}_K$ is not a \emph{true} upper bound
+on the discretization error. Often times such a true \emph{error estimate}
+is difficult to find, for instance, due to nonlinearities in the
+underlying PDE. Nonetheless, an indicator approximation $\hat{\eta}_K$
+to the true upper bound can be made which still qualitatively behaves
+correctly and can be used to inform mesh adaptation. The distinction here
+is that the indicator $\hat{\eta}_K$ cannot be used to \emph{guarantee}
+that the discretization error is below a certain tolerance.
+\end{itemize}
+
+\section{Reviews}
+
+\begin{itemize}
+\item \cite{radovitzky1999error}
+\item \cite{boussetta2006adaptive}
+\item \cite{diez2000adaptivity}
+\item \cite{ladeveze2003estimation}
+\item \cite{verdugo2014error}
+\item \cite{biotteau2012three}
+\item \cite{combe2002discretization}
+\item \cite{scovazzi2016simple}
+\item \cite{molinari2002three}
+\item \cite{luo2009adaptive}
+\item \cite{lahiri2010variationally}
+\item \cite{masud2013framework}
+\item \cite{radovitzky1999error}
+\item \cite{rodríguez2000error}:
+\end{itemize}
+
+\section{Literature Overview}
+
+\section{References}
+
+\bibliographystyle{plain}
+\bibliography{references.bib}
+
+\end{document}
