@@ -59,6 +59,11 @@ to the true upper bound can be made which still qualitatively behaves
 correctly and can be used to inform mesh adaptation. The distinction here
 is that the indicator $\hat{\eta}_K$ cannot be used to \emph{guarantee}
 that the discretization error is below a certain tolerance.
+\item \emph{Correction indicator}: A  \emph{correction indicator}
+$\tilde{\eta}_K$ which is used to drive mesh adaptation at the element
+level and may or may not have any mathematical basis and/or actual relation
+to the discretization error itself. For example a heuristic correction
+indicator might indicate refinement at the interface between two materials.
 \end{itemize}
 
 \section{Reviews}
