@@ -22,7 +22,7 @@ are typically written of the form $| J(u) - J(u^h) | \leq C(h)$,
 where $J(u)$ denotes some functional quantity of the solution $u$, which
 can potentially be localized. Functional error estimates are a more
 general type of error estimate that encompass normed error estimates.
-\item \emph{A priori error estimation}: In \emph{A priori} error estimation,
+\item \emph{A priori error estimation}: In \emph{a priori} error estimation,
 the right hand side $C(h)$ of the estimate depends on $h$ and the
 exact solution $u$. Its main use is in qualitative analysis, as the exact
 solution $u$ is generally unknown. For instance, an error estimate of the
@@ -69,9 +69,32 @@ indicator might indicate refinement at the interface between two materials.
 \section{Reviews}
 
 \begin{itemize}
-\item \cite{radovitzky1999error}
-\item \cite{boussetta2006adaptive}
-\item \cite{diez2000adaptivity}
+\item
+\emph{Error estimation and adaptive meshing in strongly nonlinear dynamic
+problems} \cite{radovitzky1999error}: The authors develop a framework for
+estimating errors in nonlinear solid mechanics problems that are potentially
+dynamic. They assume that the material obeys a minimum principle, valid
+for a range of material models with an appropriate constitutive update,
+and use this minimum principle as the basis for error estimation. They
+discretization the PDE in time first and then discretize in space leading
+to an equivalent static problem on which error estimation is performed.
+They show results for error estimation and mesh adaptation for compressive
+waves traveling down a shock tube in three dimensions with an internal
+temperature state-variable.
+\item
+\emph{Adaptive remeshing based on a posteriori error estimation for forging
+simulation} \cite{boussetta2006adaptive}: The authors present an approach
+mesh adaptation in forging simulations with a viscoplastic material model
+using ZZ/SPR-type error estimation. The governing equations do not include
+inertial terms.
+\item
+\emph{Adaptivity based on error estimation for viscoplastic softening
+materials}  \cite{diez2000adaptivity}: The authors develop an adaptive
+approach for viscoplastic materials by generalizing a residual-type
+error estimation procedure. This residual error estimate is split into two
+parts: local solves over element interiors and then by solving Dirichlet
+problems over patches of elements. Results for quasi-steady problems in
+two dimensions with strain-localization are considered.
 \item \cite{ladeveze2003estimation}
 \item \cite{verdugo2014error}
 \item \cite{biotteau2012three}
