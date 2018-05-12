@@ -132,15 +132,118 @@ to standard VMS techniques. While they do not explore error estimation,
 the VMS method comes naturally equipped with a point-wise error estimate,
 and studying error estimation with this type of approach could be
 an interesting avenue for further research.
-\item \cite{molinari2002three}
-\item \cite{luo2009adaptive}
-\item \cite{lahiri2010variationally}
-\item \cite{masud2013framework}
-\item \cite{radovitzky1999error}
-\item \cite{rodríguez2000error}:
+\item
+\emph{Three-dimensional adaptive meshing by subdivision and edge-collapse in
+finite-deformation dynamic plasticity problems with application to adiabatic
+shear banding} \cite{molinari2002three}: This is an extension of the work
+\cite{radovitzky1999error} to plasticity formulations. The authors perform
+mesh adaptation (refinement and coarsening) for an adiabatic shear-banding
+example based on \emph{a posteriori} error estimates. Their approach
+appears to require elements of greater order than 1.
+\item
+\emph{Adaptive nearest-nodes finite element method guided by gradient of
+linear strain energy density} \cite{luo2009adaptive}: The authors use
+the gradient of the strain energy density to guide mesh modification.
+That is, in areas where there is a large strain energy density, they
+create a denser mesh and in areas where there there is a small strain
+energy density, there is less mesh resolution. The relative error in the
+total potential energy between adaptive iterations is used as a stopping
+criteria for the adaptive process. They apply their approach to
+2D problems in static elasticity.
+\item
+\emph{A variationally consistent mesh adaptation method for triangular
+elements in explicit Lagrangian dynamics} \cite{lahiri2010variationally}:
+The authors apply a ZZ-type error estimation procedure to recover
+`improved` stress values which serve as the basis for error estimation.
+Their main motivation is to describe mesh modification procedures that ensure
+the conservation of linear and angular momentum in explicit Lagrangian
+dynamics. They apply their adaptive approach to some 2D problems.
+\item
+\emph{A framework for residual-based stabilization of incompressible finite
+elasticity: Stabilized formulations and methods for linear triangles and
+tetrahedra} \cite{masud2013framework}: The authors develop a VMS approach
+for triangular and tetrahedral elements with equal-order pressure-displacement
+elements. They use the natural properties of the VMS method (a so-called
+fine-scale solution) as the basis for error estimation and investigate
+error estimates for a variety of quasi-steady problems in finite elasticity.
+They show at a minimum that the error is qualitatively correctly
+distributed.
+\item
+\emph{Variational h-adaption in finite deformation elasticity and plasticity}
+\cite{rodríguez2000error}: This follows the same principles as papers
+\cite{radovitzky1999error} and \cite{molinari2002three}. They however only
+consider quasi-steady problems in this paper.  \item
+\emph{Error estimation and adaptivity for nonlocal damage models}
+\cite{rodríguez2000error}: The authors perform mesh adaptation for damage
+models using a residual-type error estimate very similar to the one in
+reference \cite{diez2000adaptivity}. They apply this approach to some pretty
+cool quasi-steady problems in two dimensions.
 \end{itemize}
 
 \section{Literature Overview}
+
+The history of \emph{a posteriori} error estimation and mesh adaptation is
+intimately linked with solid mechanics applications. Despite this rich
+history, \emph{a posteriori} error estimation has remained relatively
+unexplored for (a) dynamic (b) nonlinear solid mechanics problems with
+(c) history-dependent variables. In this context, Ortiz et al.
+\cite{radovitzky1999error, mosler2007variational} studied \emph{a posteriori}
+error estimation in a global norm based on a principle of minimum potential
+energy for adiabatic shear-banding problems and Biotteau et al.
+\cite{biotteau2012three} have studied \emph{a posteriori} error estimation in
+the energy norm for dynamic elasto-plasticity using a multi-grid approach.
+
+It is, however, more common to find methods developed for some subset of
+the properties (a)-(b). For instance, for nonlinear history-dependent
+mechanics applications,  Boussetta et al. \cite{boussetta2006adaptive}
+utilized a Zienkiwicz-Zhu type error indicator to perform adaptive mesh
+refinement in metal forming simulations, Mosler and Ortiz et al. utilized the
+same error estimation approach as Ortiz et al. \cite{radovitzky1999error,
+mosler2007variational} to study quasi-static elasto-plasticity problems,
+and D{\'i}ez et al. \cite{diez2000adaptivity} and Rodr{\'i}guez et al.
+\cite{rodríguez2000error} used a residual-based error estimation technique
+to study problems in viscoplasticity and non-local damage models,
+respectively.
+
+In the context of truly transient solid mechanics problems that include
+inertial terms, Ladev{\'e}ze et al. \cite{ladeveze2003estimation,
+combe2002discretization} for linear elastodynamics problems using the
+so-called constitutive-relation error. Lahiri et al. utilized a
+Zienkiwicz-Zhu type error indicator for the Cauchy stress tensor to perform
+mesh adaptation for explicit Lagrangian dynamics. Lastly,
+\cite{verdugo2014error} presents a comprehensive review of current
+state-of-the art methods for \emph{a posteriori} error estimation in
+elastodynamics in both global norms and in functional quantities of interest,
+as discussed in the next paragraph.
+
+Rather than estimating errors in a global norm, it is also possible to
+estimate the discretization error in physically meaningful functional
+quantities of interest using adjoint-based techniques. 
+In the context of solid mechanics, adaptive adjoint-based error estimation
+has been used to study linear elasticity in two
+\cite{rannacher1997feed, stein2007error, gonzalez2014mesh} and three
+\cite{ghorashi2014goal} dimensions, two
+\cite{rannacher1998posteriori, rannacher1999posteriori} and three
+\cite{ghorashi2017goal} dimensional elasto-plasticity, two dimensional
+thermoelasticity \cite{rabizadeh2015adaptive}, two dimensional
+nonlinear elasticity \cite{larsson2002strategies}, two dimensional
+finite elasticity \cite{whiteley2014error}, and three dimensional
+finite elasticity \cite{granzow2018adjoint}. We remark that all of these
+studies assume quasi-steady governing equations, with the exception
+of \cite{verdugo2014error}.
+
+Finally, we remark that there has been recent interest in developing
+Variational Multiscale (VMS) methods for solid mechanics applications
+\cite{masud2013framework, masud2013framework, scovazzi2016simple}.
+The VMS method is naturally equipped with a point-wise error estimate
+that can be used to derive global error estimates.  Masud and Truster
+investigated the performance of this estimate in the context of
+finite deformation elasticity and Scovazzi et al. developed an extended
+VMS method for truly transient elastic behavior. The work of Scovazzi
+could potentially be extended to include error estimation results.
+
+I'll remark here that all of these works involve simplical elements
+except for reference \cite{biotteau2012three}.
 
 \bibliographystyle{plain}
 \bibliography{references.bib}
