@@ -95,11 +95,43 @@ error estimation procedure. This residual error estimate is split into two
 parts: local solves over element interiors and then by solving Dirichlet
 problems over patches of elements. Results for quasi-steady problems in
 two dimensions with strain-localization are considered.
-\item \cite{ladeveze2003estimation}
-\item \cite{verdugo2014error}
-\item \cite{biotteau2012three}
-\item \cite{combe2002discretization}
-\item \cite{scovazzi2016simple}
+\item
+\emph{Estimation of discretization errors in dynamics}
+\cite{ladeveze2003estimation}: The authors develop error estimates for
+transient dynamics problems using the so-called constitutive relation error,
+where the inertial term $\rho \ddot{u}$ is treated as a constitutive
+relationship. They develop both spatial and temporal error indicators
+and show results for simple linear elastic problems.
+\item
+\emph{Error assessment in structural transient dynamics}
+\cite{verdugo2014error}: The authors present a review of current
+state-of-the-art techniques for linear elastodynamics. They break
+estimation techniques into four categories: recovery-based, dual-weighted
+residual or adjoint-based, constitutive relation error, and
+timeline-dependent functional error estimates. They review each method
+and discuss approximating both time and spatial discretization errors.
+\item
+\emph{Three dimensional automatic refinement method for transient small
+strain elastoplastic finite element computations} \cite{biotteau2012three}:
+The authors present an adaptive procedure for dynamic elastoplasticity.
+They use a geometric multigrid procedure for the solution of the
+model problem and leverage the fact that the solution exists at different
+multigrid levels to develop three different types of indicators
+for the spatial discretization error.
+\item
+\emph{Discretization error estimator for transcient dynamic simulations}
+\cite{combe2002discretization}: This is literally almost the same
+paper as \cite{ladeveze2003estimation}.
+\item
+\emph{A simple, stable, and accurate linear tetrahedral finite element for
+transient, nearly, and fully incompressible solid dynamics: a dynamic
+variational multiscale approach} \cite{scovazzi2016simple}: The
+authors introduce an extended VMS stabilized tetrahedral element for
+transient dynamics, where transient effects are considered in addition
+to standard VMS techniques. While they do not explore error estimation,
+the VMS method comes naturally equipped with a point-wise error estimate,
+and studying error estimation with this type of approach could be
+an interesting avenue for further research.
 \item \cite{molinari2002three}
 \item \cite{luo2009adaptive}
 \item \cite{lahiri2010variationally}
@@ -109,8 +141,6 @@ two dimensions with strain-localization are considered.
 \end{itemize}
 
 \section{Literature Overview}
-
-\section{References}
 
 \bibliographystyle{plain}
 \bibliography{references.bib}
